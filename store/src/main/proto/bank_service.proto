@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package com.bank.bank.service;
+
+message DeductAmountRequest {
+  int64 orderId = 1;
+  int64 userId = 2;
+  double amount = 3;
+}
+
+message DeductAmountResponse {
+  bool success = 1;
+}
+
+
+service BankService {
+  rpc DeductAmount(DeductAmountRequest) returns (DeductAmountResponse);
+}
+
