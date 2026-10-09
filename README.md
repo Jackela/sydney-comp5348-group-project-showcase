@@ -1,14 +1,14 @@
-# Showcase: Enterprise Microservice System for Online Retail
+# Showcase: Course Microservice Project for Online Retail
 
-> **Note:** This repository is a public showcase for a private team project completed as part of the COMP5348 course at the University of Sydney. The original repository is hosted on a private university server and is not publicly accessible. The purpose of this repository is to demonstrate the overall project architecture and my contributions as part of the team.
+> **Note:** This repository is a public showcase for a private team project completed as part of the COMP5348 course at the University of Sydney. The original repository is hosted on a private university server and is not publicly accessible. This repository preserves the team project source, architecture overview, and historical contribution screenshots. AI-assisted maintenance currently covers documentation; the services have not been rerun for this update.
 
 ---
 
 ## 1. Project Overview
 
-This project is a comprehensive, enterprise-level e-commerce platform built on a microservices architecture. It simulates a real-world online retail environment, encompassing inventory management, customer transactions, order processing, and notifications. The system is composed of several independent yet interconnected services that work together to provide a seamless user experience, from browsing products to receiving order confirmation emails.
+This course project models an online retail workflow with store, bank, delivery, and email services, alongside a Next.js frontend. The source contains inventory management, payment, order processing, and notification components.
 
-The primary goal was to design and implement a robust, scalable, and maintainable system, applying industry best practices in distributed systems, database management, and inter-service communication.
+The project explores distributed services, database integration, and inter-service communication. It has not been validated here as a production deployment.
 
 ---
 
@@ -24,14 +24,14 @@ This project was a collaborative effort. The team members are:
 
 ## 3. Architecture & Tech Stack
 
-The system is built on a decoupled microservices architecture, promoting separation of concerns and independent scalability.
+The repository separates the frontend and four backend services into their own directories and build manifests.
 
 ### Architecture Diagram
 *(This is a conceptual diagram based on the project structure)*
 ```mermaid
 graph TD
     subgraph Frontend
-        A[Node.js/React UI]
+        A[Next.js/React UI]
     end
 
     subgraph Backend Services
@@ -47,14 +47,14 @@ graph TD
     end
 
     subgraph Messaging
-        H{Message Queue}
+        H{RabbitMQ}
     end
 
     A -->|REST API| B
     B -->|gRPC| C
-    B -->|Async| H
+    B -->|REST API| E
+    E -->|Order status| H
     H -->|Events| D
-    H -->|Events| E
     B --> F
     B --> G
 ```
@@ -63,25 +63,25 @@ graph TD
 
 | Category          | Technology / Tool                               |
 | ----------------- | ----------------------------------------------- |
-| **Backend**       | Java (JDK 11+), Spring Boot, Gradle             |
-| **Frontend**      | Node.js, npm, (React/Vue/Angular) |
+| **Backend**       | Java 17, Spring Boot 3.3.x, Gradle             |
+| **Frontend**      | Next.js 14, React 18, TypeScript, npm |
 | **Database**      | PostgreSQL                                      |
-| **Communication** | RESTful APIs, gRPC, Message Queuing (RabbitMQ/Kafka) |
+| **Communication** | REST APIs; gRPC in bank/store; RabbitMQ in email/delivery |
 | **DevOps**        | Git, GitHub                                     |
 
 ---
 
 ## 4. Proof of Contribution
 
-The following screenshots are provided as evidence of my work on the original private repository. All evidence has been moved to the `_meta` directory.
+The following historical screenshots record team activity and the original project context. They do not establish a complete mapping of individual ownership to the current source files. All screenshots are stored in the `_meta` directory.
 
 ### A. Contributor Statistics
-*(This image shows the contribution graph from the private repository, highlighting my activity.)*
+*(This image shows the recorded contribution graph from the private repository.)*
 
 ![Contributor Graph](./_meta/contributors.png)
 
-### B. Personal Commit History
-*(A snapshot of my personal commit log, demonstrating my development process and specific contributions.)*
+### B. Historical Commit History
+*(A snapshot of the historical commit log.)*
 
 ![Commit History](./_meta/commits.png)
 
